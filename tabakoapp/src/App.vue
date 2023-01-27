@@ -1,8 +1,8 @@
 <template>
-  <HelloWorld />
+  <Futter/>
 </template>
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
+import Futter from './components/Futter.vue'
 </script>
 <style scoped>
 </style>
