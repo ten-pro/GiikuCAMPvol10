@@ -1,8 +1,8 @@
 <template>
-  <HelloWorld />
+<dashboard />
 </template>
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
+import dashboard from './components/dashboard.vue'
 </script>
 <style scoped>
 </style>
