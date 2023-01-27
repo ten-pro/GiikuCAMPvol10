@@ -1,9 +1,8 @@
 <template>
     <div>
-        <div class="box">
-            <div class="text">総ニコチン</div>
-            <div class="mg">200mg</div>
-        </div>
+<div class="box">
+    <div class="text">豆知識</div>
+</div>
     </div>
   </template>
   <script setup>

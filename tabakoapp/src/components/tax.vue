@@ -1,9 +1,8 @@
 <template>
     <div>
-        <div class="box">
-            <div class="text">総ニコチン</div>
-            <div class="mg">200mg</div>
-        </div>
+<div class="box">
+    <div class="text">z税金</div>
+</div>
     </div>
   </template>
   <script setup>
@@ -14,6 +13,7 @@
     height: 12vh;
     border: 2px solid black;
     border-radius: 20px;
+    margin: 0 5vw 0 0;
   }
   </style>
   
