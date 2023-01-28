@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="wrap">
         <headerr />
         <div class="dayChange">
             <button class="day">Day</button>
@@ -60,6 +60,10 @@
   
   </script>
   <style scoped>
+  .wrap{
+    overflow: auto;
+    height: 80vh;
+  }
 .dayChange {
     justify-content: space-around;
     width: 100vw;

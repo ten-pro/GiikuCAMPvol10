@@ -9,8 +9,8 @@
             </p>
         </div>
         <div class="distance">
-            {{state.distance.toString().length < 7 ? state.distance : state.distance.toString().length < 8 ? state.distance/10 : state.distance.toString().length < 10 ? state.distance/100000 : state.distance/100000000}}
-            {{ state.distance.toString().length < 7 ? "mm" : state.distance.toString().length < 8 ? "cm" : state.distance.toString().length < 10 ? "M" : "Km"}}
+            {{state.distance.toString().length < 4 ? state.distance : state.distance.toString().length < 6 ? state.distance/10 : state.distance.toString().length < 8 ? state.distance/1000 : state.distance/1000000}}
+            {{ state.distance.toString().length < 4 ? "mm" : state.distance.toString().length < 6 ? "cm" : state.distance.toString().length < 8 ? "M" : "Km"}}
         </div>
         <!-- <div class="tabako_area">   
             <img  v-for="i in 999" :key="i" class="tabako_img" src="./PNG/tabako_distance.png">
@@ -26,16 +26,35 @@
                 <img v-if="state.tabako_count-i*5+4>0" class="tabako_img" src="./PNG/tabako_distance.png">
             </div>
         </div>
+        <Futter />
     </div>
 </template>
 <script setup>
 import {reactive} from "vue"
+import Futter from "./Futter.vue"
+import axios from "axios"
 let tate=85;
 let state = reactive({
-    distance:1700000000000,
-    tabako_count:200,
+    distance:0,
+    tabako_count:0,
 })
-
+const startfunk=()=>{
+    axios
+        .post('http://mp-class.chips.jp/tobaco/main.php', {
+            user_id:1,//ユーザID
+            login_user: ''
+        }, {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        })
+        .then(function (res) {
+            console.log(res)
+            state.tabako_count=res.data.tobaco.all.num;
+            state.distance=state.tabako_count*85;
+        })
+}
+startfunk();
 </script>
 <style scoped>
 .doctor_area{
@@ -61,7 +80,7 @@ let state = reactive({
 .distance{
     text-align: center;
     margin:auto;
-    margin-top:3vh;
+    margin-top:2vh;
     padding:1vh;
     font-size: 5vh;
     font-weight: bold;
@@ -76,10 +95,10 @@ let state = reactive({
     margin:auto;
     border: 1.5vw solid black;
     border-radius: 20px;
-    margin-top:3vh;
+    margin-top:2vh;
     padding:5vw;
     width:80vw;
-    height:55vh;
+    height:47vh;
     overflow:auto;
     background-color: white;
 }

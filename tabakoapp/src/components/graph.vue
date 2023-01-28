@@ -14,6 +14,8 @@
     border: 2px solid black;
     border-radius: 20px;
     margin: 3vh 0 0 0;
+    background-color: white;
+    color: black;
   }
   </style>
   
