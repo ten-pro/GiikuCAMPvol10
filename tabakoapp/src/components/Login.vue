@@ -8,6 +8,7 @@
                 計算しちゃいます！
             </p>
         </div>
+        <Transition>
         <div v-if="question==1">
             <h1>Q1</h1>
             <div class="question">
@@ -41,6 +42,7 @@
                 計算する！
             </div>
         </div>
+        </Transition>
     </div>
 </template>
 <script setup>
@@ -53,10 +55,10 @@ let questions = reactive({
     day:0,
 })
 try{
-    let tabaco_id=localStorage.getItem("tabaco_id");
-    if(tabaco_id!=null){
-        location.href="/dashboard";
-    }
+    // let tabaco_id=localStorage.getItem("tabaco_id");
+    // if(tabaco_id!=null){
+    //     location.href="/dashboard";
+    // }
 }catch(error){
 }
 
@@ -91,6 +93,7 @@ h1{
     margin:3vh auto;
     font-size:8vh;
     text-align: center;
+    transition: width 1s ease-in-out;
 }
 .title{
     margin-top:5vh;
@@ -165,5 +168,14 @@ h1{
 .tabako_text{
     position: absolute;
     left:50%;
+}
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 1s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
 }
 </style>
