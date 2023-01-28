@@ -1,4 +1,4 @@
-<!-- <template>
+<template>
 <dashboard />
 </template>
 <script setup>
@@ -16,11 +16,11 @@ import dashboard from './components/dashboard.vue'
 <style scoped>
 </style> -->
 
-<template>
+<!-- <template>
     <Bacode />
 </template>
 <script setup>
     import Bacode from './components/Bacode.vue'
 </script>
 <style scoped>
-</style>
+</style> -->
