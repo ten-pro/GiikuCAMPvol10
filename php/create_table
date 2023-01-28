@@ -28,6 +28,7 @@ CREATE TABLE smoking_tbl(
     smoking_id       INT             AUTO_INCREMENT  ,
     user_id          INT             NOT NULL        ,
     smoking_number   INT             NOT NULL        ,
+    smoking_year     INT             NOT NULL        ,
     smoking_morth    INT             NOT NULL        ,
     smoking_day      INT             NOT NULL        ,
     PRIMARY KEY     (smoking_id),
