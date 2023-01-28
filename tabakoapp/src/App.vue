@@ -5,9 +5,9 @@
 import dashboard from './components/dashboard.vue'
 </script>
 <style scoped>
-</style> -->
+</style>
 
-<!-- <template>
+<template>
     <Honsu />
 </template>
 <script setup>
