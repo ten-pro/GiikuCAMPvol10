@@ -1,9 +1,9 @@
 <template>
     <div>
         <div class="box">
-            <img src="../PNG/nicotine.png" class="nicotineChar">
+            <img src="../PNG/tar.png" class="tarChar">
             <div class="param">
-            <div class="text">総ニコチン</div>
+            <div class="text">総タール</div>
             <div class="mg">20000mg</div>
         </div>
         </div>
@@ -20,10 +20,10 @@
     display: flex;
     position: relative;
   }
-  .nicotineChar {
-    width: 40%;
-    height: 90%;
-    margin: 3% 0 0 3%;
+  .tarChar {
+    position: absolute;
+    width: 45%;
+    margin: 4% 0 0 3%;
   }
   .param {
     position: absolute;
