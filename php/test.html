@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <h2>create_tobaco</h2>
+        銘柄<input type="text" v-model="tobaconame"><br>
+        バーコード<input type="number" v-model="jancode"><br>
+        <input type="button" value="タバコ作成" @click="create_tobaco"><br>
+        <br>
+        <h2>createuser</h2>
+        今までにどれくらい吸ってきたか<input type="number" v-model="smokingnumber"><br>
+        <input type="button" value="Create" @click="create_user"><br>
+
+        <h2>Login</h2>
+        id<input type="number" v-model="user_id"><br>
+        <input type="button" value="Login" @click="loginchk"><br>
+        <br>
+        <h2>create_smoking</h2>
+        ユーザid<input type="number" v-model="user_id"><br>
+        本数<input type="number" v-model="smokingnumber"><br>
+        <input type="button" value="smoking" @click="create_smoking"><br>
+        <br>
+        <h2>create_smoking2</h2>
+        ユーザid<input type="number" v-model="user_id"><br>
+        本数<input type="number" v-model="smokingnumber"><br>
+        年<input type="number"min="1900" max="2023" v-model="year">月<input type="number"min="1" max="12" v-model="morth">日<input type="number"min="1" max="32" v-model="date">
+        <input type="button" value="smoking" @click="create_smoking_date"><br>
+        <br>
+        <h2>Ifstory</h2>
+        金額<input type="number" v-model="money"><br>
+        出来たこと<input type="text" v-model="thing"><br>
+        文章<input type="text" v-model="story"><br>
+        <input type="button" value="create_ifstory" @click="create_ifstory"><br>
+
+    </div>
+    <!-- vue.jsのCDN -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!-- JSONを扱うためのCDN -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <!-- JSの読み込み -->
+    <script src="./test.js"></script>
+</body>
+</html>

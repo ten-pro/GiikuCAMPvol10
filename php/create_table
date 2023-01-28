@@ -1,8 +1,6 @@
 //ユーザーテーブル
 CREATE TABLE user_tbl(
     user_id         INT             AUTO_INCREMENT  ,
-    user_pass       VARCHAR(255)    NOT NULL        ,
-    user_name       VARCHAR(30)     NOT NULL        ,
     PRIMARY KEY     (user_id)
 );
 
@@ -28,6 +26,7 @@ CREATE TABLE smoking_tbl(
     smoking_id       INT             AUTO_INCREMENT  ,
     user_id          INT             NOT NULL        ,
     smoking_number   INT             NOT NULL        ,
+    smoking_year     INT             NOT NULL        ,
     smoking_morth    INT             NOT NULL        ,
     smoking_day      INT             NOT NULL        ,
     PRIMARY KEY     (smoking_id),
