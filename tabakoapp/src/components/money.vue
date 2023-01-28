@@ -24,16 +24,17 @@ export default {
             100000: '../PNG/5000.png',
             1000000: '../PNG/10000.png'
         }
+        
         const moneyNum = reactive({ amount: 1, })
         const imagePath = computed(() => {
-    const keys = Object.keys(images).sort((a, b) => a - b)
-    for (let key of keys) {
-        if (moneyNum.amount <= key) {
-            return images[key]
-        }
-    }
-    return images[keys[keys.length - 1]]
-}, [moneyNum])
+            const keys = Object.keys(images).sort((a, b) => a - b)
+            for (let key of keys) {
+                if (moneyNum.amount <= key) {
+                    return images[key]
+                }
+            }
+            return images[keys[keys.length - 1]]
+        }, [moneyNum])
 
 
         return {
