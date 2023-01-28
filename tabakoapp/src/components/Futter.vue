@@ -17,7 +17,7 @@
   bottom: 0;
   display: flex;
   width: 100%;
-  border-radius: 10px;
+  border-radius: 20px;
   justify-content: space-around;
   }
 .home{

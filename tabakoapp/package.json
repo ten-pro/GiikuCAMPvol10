@@ -8,10 +8,15 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "vue": "^3.2.45"
+    "@ericblade/quagga2": "^1.8.2",
+    "axios": "^1.2.5",
+    "vue": "^3.2.45",
+    "vue-axios": "^3.5.2",
+    "vue-qrcode-reader": "^3.1.0"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.0.0",
+    "quagga": "^0.12.1",
     "vite": "^4.0.0"
   }
 }
