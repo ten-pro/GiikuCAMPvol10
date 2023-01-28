@@ -25,6 +25,8 @@
     margin: 3vh 0 0 0;
     position: relative;
     justify-content: space-evenly;
+    background-color: white;
+    color: black;
   }
 .yyyy, .mm, .dd, .hh {
     font-size: 120%;

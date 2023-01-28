@@ -53,6 +53,8 @@ export default {
     border-radius: 20px;
     margin: 0 5vw 0 0;
     position: relative;
+    background-color: white;
+    color: black;
   }
 .text {
     font-size: 110%;
