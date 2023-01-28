@@ -22,7 +22,7 @@ const routes = [
     path: '/barcode',
     component: barcode,
   },
-  
+  {
     path: '/zukan',
     component: Zukan,
   },
