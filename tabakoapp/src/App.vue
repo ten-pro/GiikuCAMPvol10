@@ -23,7 +23,7 @@ let tabakos = reactive([
   {value:2,name:"マルボロ"},
   {value:3,name:"ケント"},
   {value:4,name:"ウィンストン"},
-  {value:5,name:"ナチュナル"},
+  {value:5,name:"スピリット"},
   {value:6,name:"ハイライト"},
   {value:7,name:"わかば"},
 ])
