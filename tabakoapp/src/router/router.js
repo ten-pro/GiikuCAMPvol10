@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Login from '../components/Login.vue';
 import Distance from '../components/Distance.vue';
-
+import DashBoard from '../components/dashboard.vue'
 const routes = [
   {
     path: '/',
@@ -10,6 +10,10 @@ const routes = [
   {
     path: '/distance',
     component: Distance,
+  },
+  {
+    path: '/dashboard',
+    component: DashBoard,
   },
 ]
 
