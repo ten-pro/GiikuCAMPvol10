@@ -2,13 +2,14 @@
     <div>
         <div class="img_area">
             <Toroku />
-            <Bacode />
+            <Bacode @:click="startCamera()"/>
         </div>
         <div class="bacode_area">
                 <h3>バーコードを下記のカメラに合わせてください</h3>
                 <div id="interactive" class="viewport"></div>
                 
-            <img src="../PNG/sousin.png" alt="" class="sousin">
+                <input type="text" class="input" placeholder="手入力はこちらから" v-model="barcodeNum.num">
+            <img src="../PNG/sousin.png" alt="" class="sousin" @click="send()">
         </div>
         <Futter />
     </div>
@@ -21,9 +22,28 @@ import Futter from './Futter.vue'
 import axios from "axios";
 import Quagga from "@ericblade/quagga2";
 import { ref, onMounted } from "vue";
+const barcodeNum = reactive({num:0});
+
+const send = () => {
+  axios
+                .post('http://mp-class.chips.jp/tobaco/main.php', {
+                    user_id: 1,
+                    // localStrage.getItem("tabaco_id")
+                    barcode: barcodeNum.num,
+                    scan_barcode: ''
+                }, {
+                    headers: {
+                        'Content-Type': 'multipart/form-data'
+                    }
+                })
+                .then(function (res) {
+                    console.log(res)
+
+                })
+}
 
 
-onMounted(() => {
+const startCamera = () => {
   //初期設定
   Quagga.init(
     {
@@ -56,7 +76,6 @@ onMounted(() => {
       }
     }
   );
-
   Quagga.onDetected((result) => {
     console.log(result.codeResult.code);
       const code = result.codeResult.code;
@@ -64,10 +83,23 @@ onMounted(() => {
       
     });
 
-})
+  
+}
+
 
 </script>
+
 <style scoped>
+.input {
+  position: absolute;
+  bottom: 30%;
+  left: 20%;
+  width: 60vw;
+  font-size: 200%;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 10px;
+}
 .img_area{
     position: relative;
     top:9vh;
