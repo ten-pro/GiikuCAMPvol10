@@ -3,17 +3,28 @@
 <div class="box">
     <div class="text">合計金額</div>
     <div class="imgNum">
-        <img :src="imagePath" class="moneyImg">
-        <!-- <img src="../PNG/bronze.png" alt=""> -->
+        <div v-bind:class="[bgImg === 1 ? 'bronze' : '',
+                            bgImg === 2 ? 'silver' : '',
+                            bgImg === 3 ? 'gold' : '',
+                            bgImg === 4 ? 'sen' : '',
+                            bgImg === 5 ? 'gosen' : '',
+                            bgImg === 6 ? 'man' : '']">
         <div class="num">{{ amount }}円</div>
     </div>
 </div>
-<div class="">nnn</div>
+    </div>
     </div>
 </template>
 <script>
 import { reactive, computed } from "@vue/reactivity"
-
+let img = reactive([
+    {value: 1, name: "bronze",
+value:2, name: "silver",
+value:3, name: "gold",
+value:4, name: "1000",
+value:5, name: "5000",
+value: 6, name: "10000"}])
+let bgImg = ref(1)
 export default {
     setup() {
         const images = {
@@ -64,9 +75,35 @@ export default {
 .imgNum {
     display: flex;
 }
-.moneyImg {
+.moneyImg, .bronze {
     width: 40%;
     margin: 2% 0 0 3%;
+    background-image: url("../PNG/bronze.png");
+}
+.moneyImg, .silver {
+    width: 40%;
+    margin: 2% 0 0 3%;
+    background-image: url("../PNG/silver.png");
+}
+.moneyImg, .gold {
+    width: 40%;
+    margin: 2% 0 0 3%;
+    background-image: url("../PNG/gold.png");
+}
+.moneyImg, .sen {
+    width: 40%;
+    margin: 2% 0 0 3%;
+    background-image: url("../PNG/1000.png");
+}
+.moneyImg, .gosen {
+    width: 40%;
+    margin: 2% 0 0 3%;
+    background-image: url("../PNG/5000.png");
+}
+.moneyImg, .man {
+    width: 40%;
+    margin: 2% 0 0 3%;
+    background-image: url("../PNG/10000.png");
 }
 .num {
     position: absolute;
