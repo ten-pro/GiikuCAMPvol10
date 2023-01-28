@@ -8,6 +8,7 @@
         <div class="num">{{ amount }}円</div>
     </div>
 </div>
+<div class="">nnn</div>
     </div>
 </template>
 <script>
