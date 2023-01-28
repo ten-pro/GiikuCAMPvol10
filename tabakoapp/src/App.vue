@@ -8,7 +8,7 @@
                         bgimg === 7 ? 'wakaba' : '',]">
     <label class="selectbox-003">
       <select v-model="bgimg">
-        <option v-for="tabako in tabakos" :value="tabako.value" :selected="tabako.value == bgimg">
+        <option v-for="tabako in tabakos" :value="tabako.value" :selected="tabako.value == bgimg" :key="tabako.value">
           {{ tabako.name }}
         </option>
       </select>
