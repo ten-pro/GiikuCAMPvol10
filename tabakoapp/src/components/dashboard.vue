@@ -22,22 +22,22 @@
         </div>
 
         <div class="around">
-        <div class="contents">
-        <risk />
-        <money />
-        <buy />
-        <times />
-        <ranking />
-        <tax />
-        <trivia />
-    </div>
-    </div>
-    <div class="life">
-    <report />
-</div>
-<div class="life bottom">
-<graph />
-</div>
+            <div class="contents">
+                <risk />
+                <money />
+                <buy />
+                <times />
+                <ranking />
+                <tax />
+                <trivia />
+            </div>
+        </div>
+        <div class="life">
+            <report />
+        </div>
+        <div class="life bottom">
+            <graph />
+        </div>
         <Futter class="futter" />
     </div>
 </template>
@@ -57,6 +57,7 @@
   import trivia from './trivia.vue'
   import report from './report.vue'
   import graph from './graph.vue'
+  
   </script>
   <style scoped>
 .dayChange {
