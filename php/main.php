@@ -17,23 +17,20 @@ if (isset($_POST['login_user']) == true) {
 
     //配列の宣言（無いとエラーが発生した）
     $data = array();
-
-    $class = new Login();
-    $id = $class->login_user($_POST['user_name'], $_POST['user_pass']);
-    $class2 = new Tobaco();
-    $tobaco = $class2->get_sumtobaco($id);
-    $data=array('tobaco' => $tobaco, 'id' => $id);
+    $class = new Tobaco();
+    $tobaco = $class->get_sumtobaco($_POST['user_id']);
+    $data = array('tobaco' => $tobaco);
 }
 
 //create_userの引数がある時の処理
 if (isset($_POST['create_user']) == true) {
-
-    //配列の宣言（無いとエラーが発生した）
-    $data = array();
-
     $class = new Login();
-    $id = $class->create_user($_POST['user_name'], $_POST['user_pass']);
-    array_push($data, array('id' => $id));
+    $id = $class->create_user();
+
+    $class = new Tobaco();
+    $class->create_smoking_date($id, $_POST['number'], 2000, 0, 0,);
+
+    $data = $id;
 }
 
 //create_tobacoの引数がある時の処理
@@ -46,6 +43,12 @@ if (isset($_POST['create_tobaco']) == true) {
 if (isset($_POST['create_smoking']) == true) {
     $class = new Tobaco();
     $data = $class->create_smoking($_POST['user_id'], $_POST['number']);
+}
+
+//create_smoking_dateの引数がある時の処理
+if (isset($_POST['create_smoking_date']) == true) {
+    $class = new Tobaco();
+    $data = $class->create_smoking_date($_POST['user_id'], $_POST['number'], $_POST['year'], $_POST['morth'], $_POST['date'],);
 }
 
 //create_ifstoryの引数がある時の処理

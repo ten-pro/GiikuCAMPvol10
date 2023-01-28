@@ -12,7 +12,10 @@ const app = new Vue({
             smokingnumber:0,
             money:0,
             thing:'',
-            story:''
+            story:'',
+            year:0,
+            morth:0,
+            date:0
         }
     },
     //ページが読み込まれた時に動く処理
@@ -40,8 +43,7 @@ const app = new Vue({
         create_user() {
             axios
                 .post('http://mp-class.chips.jp/tobaco/main.php', {
-                    user_name: this.user_name,
-                    user_pass: this.user_pass,
+                    number:this.smokingnumber,
                     create_user: ''
                 }, {
                     headers: {
@@ -56,8 +58,7 @@ const app = new Vue({
         loginchk() {
             axios
                 .post('http://mp-class.chips.jp/tobaco/main.php', {
-                    user_name: this.user_name,
-                    user_pass: this.user_pass,
+                    user_id:this.user_id,
                     login_user: ''
                 }, {
                     headers: {
@@ -74,6 +75,25 @@ const app = new Vue({
                     user_id: this.user_id,
                     number: this.smokingnumber,
                     create_smoking: ''
+                }, {
+                    headers: {
+                        'Content-Type': 'multipart/form-data'
+                    }
+                })
+                .then(
+                    (response) => (console.log(response.data)),
+
+                )
+        },
+        create_smoking_date() {
+            axios
+                .post('http://mp-class.chips.jp/tobaco/main.php', {
+                    user_id: this.user_id,
+                    number: this.smokingnumber,
+                    year:this.year,
+                    morth:this.morth,
+                    date:this.date,
+                    create_smoking_date: ''
                 }, {
                     headers: {
                         'Content-Type': 'multipart/form-data'
