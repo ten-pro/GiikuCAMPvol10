@@ -19,6 +19,9 @@
     border-radius: 20px;
     display: flex;
     position: relative;
+    background-color: white;
+    color: black;
+
   }
   .nicotineChar {
     width: 40%;

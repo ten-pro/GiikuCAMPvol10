@@ -19,6 +19,8 @@
     border-radius: 20px;
     display: flex;
     position: relative;
+    background-color: white;
+    color: black;
   }
   .tarChar {
     position: absolute;

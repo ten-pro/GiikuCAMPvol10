@@ -22,6 +22,8 @@
     height: 12vh;
     border: 2px solid black;
     border-radius: 20px;
+    background-color: white;
+    color: black;
   }
   .text {
     font-size: 110%;
