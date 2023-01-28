@@ -22,8 +22,10 @@ import axios from "axios";
 import Quagga from "@ericblade/quagga2";
 import { ref, onMounted } from "vue";
 
-
-
+// 3101179067720
+// 3115031067780
+// 0494112017641
+// 0494212877671
 onMounted(() => {
   //初期設定
   Quagga.init(
@@ -59,7 +61,7 @@ onMounted(() => {
   );
 
   Quagga.onDetected((result) => {
-    console.log('スタート');
+    console.log(result.codeResult.code);
       const code = result.codeResult.code;
     Quagga.stop();
       
