@@ -8,6 +8,7 @@
                 計算しちゃいます！
             </p>
         </div>
+        <Transition>
         <div v-if="question==1">
             <h1>Q1</h1>
             <div class="question">
@@ -41,18 +42,42 @@
                 計算する！
             </div>
         </div>
+        </Transition>
     </div>
 </template>
 <script setup>
 import { ref,reactive } from 'vue';
+import axios from 'axios';
 let question = ref(1)
 let questions = reactive({
     year:0,
     month:0,
     day:0,
 })
+try{
+    // let tabaco_id=localStorage.getItem("tabaco_id");
+    // if(tabaco_id!=null){
+    //     location.href="/dashboard";
+    // }
+}catch(error){
+}
+
 const createfunk=()=>{
     console.log(questions)
+    axios
+        .post('http://mp-class.chips.jp/tobaco/main.php', {
+            number:(questions.year*365+questions.month*30)*questions.day,//今までに吸ってきた本数
+            create_user: ''
+        }, {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        })
+        .then(function (res) {
+            console.log(res.data)
+            localStorage.setItem("tabaco_id",res.data);
+            location.href="/dashboard";
+        })
 }
 const props = defineProps({
     nowbg: Number,
@@ -68,6 +93,7 @@ h1{
     margin:3vh auto;
     font-size:8vh;
     text-align: center;
+    transition: width 1s ease-in-out;
 }
 .title{
     margin-top:5vh;
@@ -142,5 +168,14 @@ h1{
 .tabako_text{
     position: absolute;
     left:50%;
+}
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 1s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
 }
 </style>
