@@ -44,7 +44,7 @@ const hikusum1 = () =>{
 }
 const create_smoking=() =>{
             axios
-                .post('http://mp-class.chips.jp/tobaco/main.php', {
+                .post('https://mp-class.chips.jp/tobaco/main.php', {
                     user_id: localStorage.getItem("tabaco_id"),
                     number:hairetu.sum,
                     create_smoking: ''

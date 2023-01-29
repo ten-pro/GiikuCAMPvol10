@@ -26,7 +26,7 @@ const barcodeNum = reactive({num:0});
 
 const send = () => {
   axios
-                .post('http://mp-class.chips.jp/tobaco/main.php', {
+                .post('https://mp-class.chips.jp/tobaco/main.php', {
                     user_id: localStorage.getItem("tabaco_id"),
                     // localStrage.getItem("tabaco_id")
                     barcode: barcodeNum.num,
@@ -79,6 +79,7 @@ const startCamera = () => {
   Quagga.onDetected((result) => {
     console.log(result.codeResult.code);
       const code = result.codeResult.code;
+      barcodeNum.num = result.codeResult.code;
     Quagga.stop();
       
     });

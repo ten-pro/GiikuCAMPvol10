@@ -66,7 +66,7 @@ try{
 const createfunk=()=>{
     console.log((questions.year*365+questions.month*30)*questions.day)
     axios
-        .post('http://mp-class.chips.jp/tobaco/main.php', {
+        .post('https://mp-class.chips.jp/tobaco/main.php', {
             number:(questions.year*365+questions.month*30)*questions.day,//今までに吸ってきた本数
             create_user: ''
         }, {

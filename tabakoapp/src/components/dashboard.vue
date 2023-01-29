@@ -135,7 +135,7 @@
     {name:"先々月",pl:4000}
     ])
   async function fetchData() {
-    const res = await axios.post('http://mp-class.chips.jp/tobaco/main.php', {
+    const res = await axios.post('https://mp-class.chips.jp/tobaco/main.php', {
             user_id:localStorage.getItem("tabaco_id"),//ユーザID
             login_user: ''
         }, {
