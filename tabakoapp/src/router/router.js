@@ -3,6 +3,7 @@ import Login from '../components/Login.vue';
 import Distance from '../components/Distance.vue';
 
 import Dashboard from '../components/dashboard.vue';
+import Honsu from '../components/Honsu.vue';
 
 const routes = [
   {
@@ -16,6 +17,10 @@ const routes = [
   {
     path: '/dashboard',
     component: Dashboard,
+  },
+  {
+    path: '/honsu',
+    component: Honsu,
   },
 ]
 

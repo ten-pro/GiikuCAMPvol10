@@ -1,6 +1,6 @@
 <template>
     <div>
-        <img src="../../PNG/bacodo.png" alt="" class="bacode_img">
+        <img src="../../PNG/sukyan.png" alt="" class="bacode_img">
     </div>
 </template>
 <script setup>
@@ -11,5 +11,7 @@
     top:1vh;
     left: 24vh;
     width: 20vh;
+    border-top-right-radius: 18px;
+    border-bottom-right-radius:14px;
 }
 </style>
