@@ -4,12 +4,15 @@
             <img src="../PNG/nicotine.png" class="nicotineChar">
             <div class="param">
             <div class="text">総ニコチン</div>
-            <div class="mg">20000mg</div>
+            <div class="mg">{{nowstate.nicotine}}mg</div>
         </div>
         </div>
     </div>
   </template>
   <script setup>
+  const props = defineProps({
+    nowstate: Object,
+  })
   </script>
   <style scoped>
   .box {
