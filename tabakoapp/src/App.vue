@@ -1,14 +1,14 @@
 <template>
-  <div v-bind:class="[bgimg === 1 ? 'peace' : '',
-                        bgimg === 2 ? 'maruboro' : '',
-                        bgimg === 3 ? 'ent' : '',
-                        bgimg === 4 ? 'winston' : '',
-                        bgimg === 5 ? 'amerikan' : '',
-                        bgimg === 6 ? 'hilite' : '',
-                        bgimg === 7 ? 'wakaba' : '',]">
+  <div v-bind:class="[bgimg.value === 1 ? 'peace' : '',
+                        bgimg.value === 2 ? 'maruboro' : '',
+                        bgimg.value === 3 ? 'ent' : '',
+                        bgimg.value === 4 ? 'winston' : '',
+                        bgimg.value === 5 ? 'amerikan' : '',
+                        bgimg.value === 6 ? 'hilite' : '',
+                        bgimg.value === 7 ? 'wakaba' : '',]">
     <label class="selectbox-003">
-      <select v-model="bgimg">
-        <option v-for="tabako in tabakos" :value="tabako.value" :selected="tabako.value == bgimg" :key="tabako.value">
+      <select v-model="bgimg.value"  @click="changefunk">
+        <option v-for="tabako in tabakos" :value="tabako.value" :selected="tabako.value == bgimg.value" :key="tabako.value">
           {{ tabako.name }}
         </option>
       </select>
@@ -17,7 +17,7 @@
   </div>
 </template>
 <script setup>
-import { ref,reactive } from 'vue';
+import { ref,reactive,watch } from 'vue';
 let tabakos = reactive([
   {value:1,name:"ピース"},
   {value:2,name:"マルボロ"},
@@ -27,7 +27,15 @@ let tabakos = reactive([
   {value:6,name:"ハイライト"},
   {value:7,name:"わかば"},
 ])
-let bgimg = ref(1)
+let bgimg = reactive({
+  value:1,
+})
+if(localStorage.getItem("bgimg")>0){
+  bgimg.value=parseInt(localStorage.getItem("bgimg"));
+}
+const changefunk=()=>{
+  localStorage.setItem("bgimg",bgimg.value);
+}
 </script>
 <style>
 .peace{
@@ -122,5 +130,6 @@ let bgimg = ref(1)
     background-color: #fff;
     color: #555;
     cursor: pointer;
+    background-color: rgb(209, 209, 209);
 }
 </style>

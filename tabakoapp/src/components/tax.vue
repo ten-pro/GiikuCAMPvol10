@@ -4,12 +4,15 @@
     <div class="text">税金</div>
     <div class="con">
     <img src="../PNG/tax.png" class="tax">
-    <div class="num">0000円</div>
+    <div class="num">{{nowstate.tax}}円</div>
 </div>
 </div>
     </div>
   </template>
   <script setup>
+  const props = defineProps({
+    nowstate: Object,
+  })
   </script>
   <style scoped>
   .box {

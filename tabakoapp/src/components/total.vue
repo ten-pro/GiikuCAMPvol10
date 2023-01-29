@@ -2,11 +2,16 @@
     <div>
         <div class="circle">
             <div class="totalText">合計</div>
-            <div class="totalNum">10000本</div>
+            <div class="totalNum">{{props.nowstate.num}}本</div>
         </div>
     </div>
   </template>
   <script setup>
+  import {reactive,watch} from "vue"
+
+  const props = defineProps({
+    nowstate: Object,
+  })
   </script>
   <style scoped>
   .circle {
