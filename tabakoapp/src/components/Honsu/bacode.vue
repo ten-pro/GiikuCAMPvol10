@@ -1,6 +1,6 @@
 <template>
     <div>
-        <img src="../../PNG/sukyan.png" alt="" class="bacode_img">
+        <a href="/barcode"><img src="../../PNG/sukyan.png" alt="" class="bacode_img"></a>
     </div>
 </template>
 <script setup>

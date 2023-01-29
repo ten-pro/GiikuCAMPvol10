@@ -1,6 +1,6 @@
 <template>
     <div>
-        <img src="../../PNG/honsu.png" alt="" class="honsu_img">
+        <a href="/honsu"><img src="../../PNG/honsu.png" alt="" class="honsu_img"></a>
     </div>
 </template>
 <script setup>

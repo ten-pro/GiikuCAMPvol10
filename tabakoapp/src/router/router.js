@@ -24,7 +24,9 @@ const routes = [
 
     path: '/honsu',
     component: Honsu,
+  },
 
+  {
     path: '/barcode',
     component: barcode,
   },
