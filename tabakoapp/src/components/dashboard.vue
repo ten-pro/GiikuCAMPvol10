@@ -2,14 +2,14 @@
     <div class="wrap">
         <headerr />
         <div class="dayChange">
-            <button class="day">Day</button>
-            <button class="month">Month</button>
-            <button class="all">All</button>
+            <button class="day" @click="utusu_day">Day</button>
+            <button class="month" @click="utusu_mon">Month</button>
+            <button class="all" @click="utusu_all">All</button>
         </div>
         <div class="threeMain">
-            <div class="leftArrow"></div>
+            <div class="leftArrow" @click="left_mon"></div>
             <total :nowstate="childprops"/>
-            <div class="rightArrow"></div>
+            <div class="rightArrow" @click="right_mon"></div>
         </div>
         <div class="around">
             <div class="harmful">
@@ -60,6 +60,9 @@
   import graph from './graph.vue'
   
   import axios from 'axios'
+
+  let month_sw = 0;
+  let month_ck = 0;
   let today=reactive({
     num:0,
     money:0,
@@ -209,6 +212,81 @@
         console.log(childprops)
 }
 fetchData();
+
+const utusu_day = () =>{
+        month_sw = 0;
+        month_ck = 0;
+        childprops.num=today.num;
+        childprops.money=today.money;
+        childprops.tax=today.tax;
+        childprops.tar=today.tar;
+        childprops.nicotine=today.nicotine;
+        childprops.time=today.time;
+        childprops.lifespan=today.lifespan;
+        childprops.if_money=today.if_money;
+        childprops.if_story=today.if_story;
+        
+
+}
+const utusu_mon = () =>{
+        month_sw = 0;
+        month_ck = 1;
+        childprops.num=this_month.num;
+        childprops.money=this_month.money;
+        childprops.tax=this_month.tax;
+        childprops.tar=this_month.tar;
+        childprops.nicotine=this_month.nicotine;
+        childprops.time=this_month.time;
+        childprops.lifespan=this_month.lifespan;
+        childprops.if_money=this_month.if_money;
+        childprops.if_story=this_month.if_story;
+        
+}
+const utusu_all = () =>{
+        month_sw = 0;
+        month_ck = 0;
+        childprops.num=all.num;
+        childprops.money=all.money;
+        childprops.tax=all.tax;
+        childprops.tar=all.tar;
+        childprops.nicotine=all.nicotine;
+        childprops.time=all.time;
+        childprops.lifespan=all.lifespan;
+        childprops.if_money=all.if_money;
+        childprops.if_story=all.if_story;
+}
+const right_mon = () =>{
+    if(month_sw <= 0 || month_ck == 0){
+        alert('一番端です');
+    }else{
+        childprops.num=one_month.num;
+        childprops.money=one_month.money;
+        childprops.tax=one_month.tax;
+        childprops.tar=one_month.tar;
+        childprops.nicotine=one_month.nicotine;
+        childprops.time=one_month.time;
+        childprops.lifespan=one_month.lifespan;
+        childprops.if_money=one_month.if_money;
+        childprops.if_story=one_month.if_story;
+    }
+}
+const left_mon = () =>{
+    if(month_sw >= 2 || month_ck == 0){
+        alert('一番端です');
+    }else{
+        month_sw ++;
+        childprops.num=two_month.num;
+        childprops.money=two_month.money;
+        childprops.tax=two_month.tax;
+        childprops.tar=two_month.tar;
+        childprops.nicotine=two_month.nicotine;
+        childprops.time=two_month.time;
+        childprops.lifespan=two_month.lifespan;
+        childprops.if_money=two_month.if_money;
+        childprops.if_story=two_month.if_story;
+    }
+        
+}
   </script>
   <style scoped>
   .wrap{
@@ -224,7 +302,7 @@ fetchData();
     display: flex;
     justify-content: space-evenly;
 }
-.day, .month, .all {
+.month, .all {
     font-size: 100%;
     font-weight: bold;
     border: 2px solid black;
@@ -286,4 +364,30 @@ fetchData();
 .bottom {
     margin: 0 0 13vh 0;
 }
+.day{
+    font-size: 100%;
+    font-weight: bold;
+    border: 2px solid black;
+    background-color: white;
+    height: 5vh;
+    width: 18vw;
+    border-radius: 100px;
+}
+.day:active{
+    background-color: #008080;
+}
+.month:active{
+    background-color: #008080;
+}
+.all:active{
+    background-color: #008080;
+}
+
+.deta{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    display: none;
+}
+
   </style>
