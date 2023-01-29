@@ -9,6 +9,7 @@ header('Content-Type: application/json; charset=UTF-8');
 require_once './LoginDAO.php';
 require_once './TobacoDAO.php';
 require_once './IfDAO.php';
+require_once './ZukanDAO.php';
 
 $data = false;
 
@@ -19,7 +20,9 @@ if (isset($_POST['login_user']) == true) {
     $data = array();
     $class = new Tobaco();
     $tobaco = $class->get_sumtobaco($_POST['user_id']);
-    $data = array('tobaco' => $tobaco);
+    $class = new Zukan();
+    $listdata = $class->get_zukanlist($_POST['user_id']);
+    $data = array('tobaco' => $tobaco,'zukan' => $listdata);
 }
 
 //create_userの引数がある時の処理
@@ -55,6 +58,26 @@ if (isset($_POST['create_smoking_date']) == true) {
 if (isset($_POST['create_ifstory']) == true) {
     $class = new Ifstory();
     $data = $class->create_ifstory($_POST['money'], $_POST['thing'], $_POST['story']);
+}
+
+//create_zukanの引数がある時の処理
+if (isset($_POST['create_zukan']) == true) {
+    $class = new Zukan();
+    $data = $class->create_zukan($_POST['user_id'], $_POST['tobaco_id']);
+}
+
+//get_zukanlistの引数がある時の処理
+if (isset($_POST['get_zukanlist']) == true) {
+    $class = new Zukan();
+    $data = $class->get_zukanlist($_POST['user_id']);
+}
+
+//scan_barcodeの引数がある時の処理
+if (isset($_POST['scan_barcode']) == true) {
+    $class = new Zukan();
+    $tobaco_id = $class->get_tobacoid($_POST['barcode']);
+    if($tobaco_id!=false)
+    $data = $class->create_zukan($_POST['user_id'],$tobaco_id);
 }
 
 //arrayの中身をJSON形式に変換している
