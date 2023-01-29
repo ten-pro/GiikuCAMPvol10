@@ -3,17 +3,16 @@
         <div class="box">
             <div class="text">失った寿命</div>
             <div class="life">
-            <div class="yyyy">99年</div>
-            <div class="mm">12月</div>
-            <div class="dd">31日</div>
-            <div class="hh">24時間</div>
+            <div class="yyyy">{{ nowstate.lifespan }}</div>
           </div>
             <img src="../PNG/t100.png" class="t">
         </div>
     </div>
   </template>
   <script setup>
-  
+  const props = defineProps({
+    nowstate: Object,
+  })
   </script>
   <style scoped>
   .box {

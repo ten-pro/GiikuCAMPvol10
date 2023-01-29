@@ -1,11 +1,14 @@
 <template>
     <div>
         <div class="box">
-            <div class="text">先生からの報告</div>
+            <div class="text">{{nowstate.if_story}}</div>
         </div>
     </div>
   </template>
   <script setup>
+  const props = defineProps({
+    nowstate: Object,
+  })
   </script>
   <style scoped>
   .box {

@@ -8,32 +8,32 @@
         </div>
         <div class="threeMain">
             <div class="leftArrow"></div>
-            <total />
+            <total :nowstate="childprops"/>
             <div class="rightArrow"></div>
         </div>
         <div class="around">
             <div class="harmful">
-                <totalNicotine />
-                <totalTar />
+                <totalNicotine :nowstate="childprops"/>
+                <totalTar :nowstate="childprops"/>
             </div>
         </div>
         <div class="life">
-            <hitPoint />
+            <hitPoint :nowstate="childprops"/>
         </div>
 
         <div class="around">
             <div class="contents">
-                <risk />
-                <money />
-                <buy />
-                <times />
-                <ranking />
-                <tax />
-                <trivia />
+                <risk/>
+                <money :nowstate="childprops"/>
+                <buy :nowstate="childprops"/>
+                <times :nowstate="childprops"/>
+                <ranking :nowstate="childprops"/>
+                <tax :nowstate="childprops"/>
+                <trivia :nowstate="childprops"/>
             </div>
         </div>
         <div class="life">
-            <report />
+            <report :nowstate="childprops"/>
         </div>
         <div class="life bottom">
             <graph />
@@ -42,6 +42,7 @@
     </div>
 </template>
   <script setup>
+  import {reactive} from "vue"
   import headerr from './headerr.vue'
   import total from './total.vue'
   import totalNicotine from './totalNicotine.vue'
@@ -57,7 +58,7 @@
   import trivia from './trivia.vue'
   import report from './report.vue'
   import graph from './graph.vue'
-  import {reactive} from "vue"
+  
   import axios from 'axios'
   let today=reactive({
     num:0,
@@ -114,16 +115,26 @@
     if_money:"",
     if_story:"",
   })
-  axios
-    .post('http://mp-class.chips.jp/tobaco/main.php', {
-        user_id:1,//ユーザID
-        login_user: ''
-    }, {
-        headers: {
-            'Content-Type': 'multipart/form-data'
-        }
-    })
-    .then(function (res) {
+  let childprops=reactive({
+    num:0,
+    money:0,
+    tax:0,
+    tar:0,
+    nicotine:0,
+    time:1040,
+    lifespan:"",
+    if_money:"",
+    if_story:"",
+  })
+  async function fetchData() {
+    const res = await axios.post('http://mp-class.chips.jp/tobaco/main.php', {
+            user_id:1,//ユーザID
+            login_user: ''
+        }, {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        })
         
         let resall=res.data.tobaco.all;
         console.log(res.data)
@@ -136,6 +147,16 @@
         all.lifespan=resall.lifespan;
         all.if_money=resall.if.if_money;
         all.if_story=resall.if.if_story;
+
+        childprops.num=resall.num;
+        childprops.money=resall.money;
+        childprops.tax=resall.tax;
+        childprops.tar=resall.tar;
+        childprops.nicotine=resall.nicotine;
+        childprops.time=resall.time;
+        childprops.lifespan=resall.lifespan;
+        childprops.if_money=resall.if.if_money;
+        childprops.if_story=resall.if.if_story;
 
         resall=res.data.tobaco.today;
         today.num=resall.num;
@@ -185,7 +206,9 @@
         console.log(one_month)
         console.log(two_month)
         console.log(all)
-    })
+        console.log(childprops)
+}
+fetchData();
   </script>
   <style scoped>
   .wrap{
