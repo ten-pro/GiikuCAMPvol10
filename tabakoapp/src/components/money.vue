@@ -3,20 +3,19 @@
         <div class="box">
             <div class="text">合計金額</div>
             <div class="imgNum">
-                <div v-bind:class="[bgImg == 1 ? 'bronze' : '',
-                                    bgImg === 2 ? 'silver' : '',
-                                    bgImg === 3 ? 'gold' : '',
-                                    bgImg === 4 ? 'sen' : '',
-                                    bgImg === 5 ? 'gosen' : '',
-                                    bgImg === 6 ? 'man' : '',]">
-                                </div>
-                    <div class="num">{{ amount }}円</div>
+                <div v-bind:class="[nowstate.money > 10000000 ? 'man' : '',
+                                    nowstate.money > 1000000 ? 'gosen' : '',
+                                    nowstate.money > 100000 ? 'sen' : '',
+                                    nowstate.money > 10000 ? 'gold' : '',
+                                    nowstate.money > 1000 ? 'silver' : '',
+                                    nowstate.money >= 0 ? 'bronze' : '',]"></div>
+                    <div class="num">{{ nowstate.money }}円</div>
              
             </div>
         </div>
     </div>
 </template>
-<script>
+<script setup>
 import { ref, reactive } from 'vue';
 let img = reactive([
     {value: 1, name: "bronze"},
@@ -26,8 +25,13 @@ let img = reactive([
     {value: 5, name: "5000"},
     {value: 6, name: "10000"},
 ])
-let bgImg = ref(1)
-let amount = ref(0)
+let bgImg = reactive({
+    value:1
+})
+console.log(bgImg.value)
+const props = defineProps({
+    nowstate: Object,
+  })
 </script>
 
   <style scoped>
@@ -48,41 +52,44 @@ let amount = ref(0)
 }
 .imgNum {
     display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
 .bronze {
-    width: 40%;
-    margin: 2% 0 0 3%;
+    width: 13vw;
+    height:13vw;
     background-image: url("../PNG/bronze.png");
+    background-size: 100% 100%;
 }
 .silver {
-    width: 40%;
-    margin: 2% 0 0 3%;
+    width: 13vw;
+    height:13vw;
     background-image: url("../PNG/silver.png");
+    background-size: 100% 100%;
 }
 .gold {
-    width: 40%;
-    margin: 2% 0 0 3%;
+    width: 13vw;
+    height:13vw;
     background-image: url("../PNG/gold.png");
+    background-size: 100% 100%;
 }
 .sen {
-    width: 40%;
-    margin: 2% 0 0 3%;
+    width: 13vw;
+    height:13vw;
     background-image: url("../PNG/1000.png");
+    background-size: 100% 100%;
 }
 .gosen {
-    width: 40%;
-    margin: 2% 0 0 3%;
+    width: 13vw;
+    height:13vw;
     background-image: url("../PNG/5000.png");
+    background-size: 100% 100%;
 }
 .man {
-    width: 40%;
-    margin: 2% 0 0 3%;
+    width: 13vw;
+    height:13vw;
     background-image: url("../PNG/10000.png");
-}
-.num {
-    position: absolute;
-    right: 8%;
-    top: 50%;
+    background-size: 100% 100%;
 }
   </style>
   

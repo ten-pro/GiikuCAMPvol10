@@ -4,12 +4,15 @@
     <div class="text">吸った時間</div>
     <div class="imgNum">
       <img src="../PNG/clock.png" class="clock">
-      <div class="num">000分</div>
+      <div class="num">{{nowstate.time}}分</div>
     </div>
 </div>
     </div>
   </template>
   <script setup>
+  const props = defineProps({
+    nowstate: Object,
+  })
   </script>
   <style scoped>
   .box {

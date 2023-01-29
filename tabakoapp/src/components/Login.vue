@@ -55,10 +55,10 @@ let questions = reactive({
     day:0,
 })
 try{
-    // let tabaco_id=localStorage.getItem("tabaco_id");
-    // if(tabaco_id!=null){
-    //     location.href="/dashboard";
-    // }
+    let tabaco_id=localStorage.getItem("tabaco_id");
+    if(tabaco_id!=null){
+        location.href="/dashboard";
+    }
 }catch(error){
 }
 

@@ -27,7 +27,7 @@ const barcodeNum = reactive({num:0});
 const send = () => {
   axios
                 .post('http://mp-class.chips.jp/tobaco/main.php', {
-                    user_id: 1,
+                    user_id: localStorage.getItem("tabaco_id"),
                     // localStrage.getItem("tabaco_id")
                     barcode: barcodeNum.num,
                     scan_barcode: ''

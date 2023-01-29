@@ -38,7 +38,7 @@
 
    </template>
 
-<script lang="ts">
+<!-- <script lang="ts">
 import { defineComponent, ref } from 'vue'
 import { Chart, Grid, Line } from 'vue3-charts'
 import { plByMonth } from '@/data'
@@ -59,6 +59,20 @@ export default defineComponent({
    return { data, direction, margin }
  }
 })
+</script> -->
+<script setup>
+import { defineComponent, ref } from 'vue'
+import { Chart, Grid, Line } from 'vue3-charts'
+   const direction = ref('horizontal')
+   const margin = ref({
+     left: 0,
+     top: 20,
+     right: 20,
+     bottom: 0
+   })
+   const props = defineProps({
+    data: Object,
+  })
 </script>
 <style scoped>
 .box {

@@ -41,7 +41,7 @@ let state = reactive({
 const startfunk=()=>{
     axios
         .post('http://mp-class.chips.jp/tobaco/main.php', {
-            user_id:1,//ユーザID
+            user_id:localStorage.getItem("tabaco_id"),//ユーザID
             login_user: ''
         }, {
             headers: {

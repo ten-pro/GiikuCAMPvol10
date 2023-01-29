@@ -1,6 +1,6 @@
 <template>
     <div class="futter_area">
-      <a href="/dashboard"><img src="../PNG/home.png" alt="" class="home"></a>
+      <a href="/barcode"><img src="../PNG/home.png" alt="" class="home"></a>
       <a href="/dashboard"><img src="../PNG/tabako.png" alt="" class="tabako"></a>
       <a href="/distance"><img src="../PNG/gurafu.png" alt="" class="gurafu"></a>
       <a href="/zukan"><img src="../PNG/toroku.png" alt="" class="toroku"></a>
