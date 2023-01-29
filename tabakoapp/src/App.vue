@@ -30,11 +30,15 @@ let tabakos = reactive([
 let bgimg = reactive({
   value:1,
 })
+console.log(localStorage.getItem("bgimg"))
 if(localStorage.getItem("bgimg")>0){
   bgimg.value=parseInt(localStorage.getItem("bgimg"));
+  console.log("aaa")
 }
 const changefunk=()=>{
-  localStorage.setItem("bgimg",bgimg.value);
+  console.log(bgimg.value)
+  localStorage.removeItem("bgimg");
+  // localStorage.setItem("bgimg",bgimg.value);
 }
 </script>
 <style>
