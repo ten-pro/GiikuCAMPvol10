@@ -14,7 +14,7 @@
             <span class="pura1" @click="addsum1">+1</span>
             <img src="../PNG/ippon.png" alt="" class="ippon">
             <span class="mai1" @click="hikusum1">-1</span>
-            <img src="../PNG/sousin.png" alt="" class="sousin" @click="create_smoking">
+            <img src="../PNG/sousin1.png" alt="" class="sousin" @click="create_smoking">
         </div>
         
         <Futter />
@@ -62,21 +62,23 @@ const create_smoking=() =>{
 <style scoped>
 .img_area{
     position: relative;
-    top:6vh;
+    top:4vh;
     height: 10vh;
     width: 100%;
 }
 .goukei_area{
     position: relative;
     border:2px solid #000000;
-    top:9vh;
-    width: 20vh;
+    top:6vh;
+    width: 30vh;
     text-align: center;
     margin: 0 auto;
+    background-color: white;
+    color: black;
 }
 .henkou_area{
     position: relative;
-    top:11vh;
+    top:7vh;
     height: 60vh;
     width: 100%;
     margin:0 auto;
@@ -101,13 +103,13 @@ const create_smoking=() =>{
 }
 .hako{
     position: absolute;
-    width: 22vh;
-    top:13vh;
+    width: 20vh;
+    top:11vh;
     left: 3vh;
 }
 .mai20{
     position: absolute;
-    top: 43vh;
+    top: 38vh;
     left: 7vh;
     font-size: 50px;
     display: inline-block;
@@ -141,13 +143,13 @@ const create_smoking=() =>{
 }
 .ippon{
     position: absolute;
-    width: 8vh;
+    width: 7vh;
     top: 10vh;
     left: 31vh;
 }
 .mai1{
     position: absolute;
-    top: 43vh;
+    top: 38vh;
     left: 32vh;
     font-size: 50px;
     display: inline-block;
@@ -164,13 +166,18 @@ const create_smoking=() =>{
 }
 .sousin{
     position: absolute;
-    top: 53vh;
+    top: 47vh;
     left: 10vh;
     text-align: center;
     width: 60%;
+    border-top-right-radius: 18px;
+    border-bottom-right-radius:14px;
+    cursor: pointer;
+
 }
 
 .goukei{
-    font-size: 30px;
+    font-size: 300%;
+    font-weight: bold;
 }
 </style>
