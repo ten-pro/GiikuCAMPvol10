@@ -1,9 +1,9 @@
 <template>
     <div class="futter_area">
-      <img src="../PNG/home.png" alt="" class="home">
-      <img src="../PNG/tabako.png" alt="" class="tabako">
-      <img src="../PNG/gurafu.png" alt="" class="gurafu">
-      <img src="../PNG/toroku.png" alt="" class="toroku">
+      <a href="/dashboard"><img src="../PNG/home.png" alt="" class="home"></a>
+      <a href="/dashboard"><img src="../PNG/tabako.png" alt="" class="tabako"></a>
+      <a href="/distance"><img src="../PNG/gurafu.png" alt="" class="gurafu"></a>
+      <a href="/zukan"><img src="../PNG/toroku.png" alt="" class="toroku"></a>
 
     </div>
   </template>
