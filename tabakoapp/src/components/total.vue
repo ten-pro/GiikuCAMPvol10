@@ -20,6 +20,8 @@
     height: 30vmin;
     border-radius: 50%;
     border: 2px solid black;
+    color: black;
+    background-color: white;
   }
   .totalText {
     position: absolute;

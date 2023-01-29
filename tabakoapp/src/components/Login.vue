@@ -1,6 +1,7 @@
 <template>
     <div class="rap">
-        <div class="title">タイトル</div>
+        <div class="title">
+        </div>
         <div class="doctor_area">
             <img class="doctor_img" src="./PNG/doctor.png">
             <p class="doctor_text">
@@ -63,7 +64,7 @@ try{
 }
 
 const createfunk=()=>{
-    console.log(questions)
+    console.log((questions.year*365+questions.month*30)*questions.day)
     axios
         .post('http://mp-class.chips.jp/tobaco/main.php', {
             number:(questions.year*365+questions.month*30)*questions.day,//今までに吸ってきた本数
@@ -96,16 +97,30 @@ h1{
     transition: width 1s ease-in-out;
 }
 .title{
-    margin-top:5vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-align: center;
-    font-size:6vh;
+    width:80vw;
+    height: 15vh;
+    margin:auto;
+    margin-top:0vh;
+    background-image: url("./PNG/title.png");
+    background-size: 100% 100%;
+    color: #000000;
+    
+}
+.title_text{
+    font-size: 8vw;
+    /* -webkit-text-stroke: 0.8vw rgb(0, 0, 0); */
+    font-family: "けいふぉんと";
 }
 .doctor_area{
     display: flex;
     background-color: white;
     color:black;
     margin:auto;
-    margin-top:5vh;
+    margin-top:3vh;
     width: 80vw;
     height:10vh;
     border: 0.5vh solid #000000;

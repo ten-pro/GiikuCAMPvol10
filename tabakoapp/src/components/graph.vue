@@ -21,7 +21,7 @@
 
   <template>
     <div class="box">
-            <div class="text">graph</div>
+            <div class="text">グラフ</div>
             <Chart
       :size="{ width: 380, height: 220 }"
       :data="data"
