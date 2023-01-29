@@ -2,12 +2,15 @@
     <div>
 <div class="box">
     <div class="text">買えていたもの</div>
+    <div class="text">{{ nowstate.if_money }}</div>
 </div>
     </div>
   </template>
   <script setup>
   import { reactive, computed } from "@vue/reactivity"
-
+  const props = defineProps({
+    nowstate: Object,
+  })
         const images = {
             0: '../PNG/genki.png',
             100: '../PNG/juice.png',
@@ -47,6 +50,7 @@
     font-size: 110%;
     font-weight: bold;
     margin: 5% 0 0 5%;
+    text-align: center;
 }
   </style>
   

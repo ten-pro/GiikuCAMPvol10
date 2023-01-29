@@ -23,12 +23,12 @@
 
         <div class="around">
             <div class="contents">
-                <risk/>
+                <!-- <risk/> -->
                 <money :nowstate="childprops"/>
-                <buy :nowstate="childprops"/>
-                <times :nowstate="childprops"/>
-                <ranking :nowstate="childprops"/>
                 <tax :nowstate="childprops"/>
+                <times :nowstate="childprops"/>
+                <buy :nowstate="childprops"/>
+                <ranking :nowstate="childprops"/>
                 <trivia :nowstate="childprops"/>
             </div>
         </div>
@@ -36,7 +36,7 @@
             <report :nowstate="childprops"/>
         </div>
         <div class="life bottom">
-            <graph />
+            <graph :data="gurahu"/>
         </div>
         <Futter class="futter" />
     </div>
@@ -126,6 +126,11 @@
     if_money:"",
     if_story:"",
   })
+  let gurahu=reactive([
+    {name:"今月",pl:1000},
+    {name:"先月",pl:2000},
+    {name:"先々月",pl:4000}
+    ])
   async function fetchData() {
     const res = await axios.post('http://mp-class.chips.jp/tobaco/main.php', {
             user_id:1,//ユーザID
@@ -201,6 +206,10 @@
         two_month.lifespan=resall.lifespan;
         two_month.if_money=resall.if.if_money;
         two_month.if_story=resall.if.if_story;
+
+        gurahu[0].pl=this_month.num;
+        gurahu[1].pl=one_month.num;
+        gurahu[2].pl=two_month.num;
         console.log(today)
         console.log(this_month)
         console.log(one_month)
