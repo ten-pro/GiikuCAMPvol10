@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="zentai_area">
         <div class="img_area">
             <Toroku />
             <!-- <Bacode @:click="startCamera()"/> -->
@@ -10,7 +10,7 @@
                     <StreamBarcodeReader @Decode="onDecode" @loaded="onLoaded" class="camera_area"></StreamBarcodeReader>
                 </div>
                 <input type="text" class="input" placeholder="手入力はこちらから" v-model="barcode.num">
-            <img src="../PNG/sousin.png" alt="" class="sousin" @click="send()">
+            <img src="../PNG/sousin1.png" alt="" class="sousin" @click="send()">
         </div>
         <Futter />
     </div>
@@ -100,12 +100,15 @@ const onDecode=(result)=>{
 </script>
 
 <style scoped>
-.camera_area{
+.zentai{
     position: relative;
 }
+/* .camera_area{
+    position: relative;
+} */
 .input {
   position: absolute;
-  top:94vw;
+  top:98vw;
   left: 20%;
   width: 60vw;
   font-size: 200%;
@@ -114,26 +117,26 @@ const onDecode=(result)=>{
   border-radius: 10px;
 }
 .img_area{
-    position: relative;
-    top:9vh;
+    position: absolute;
+    top:10vh;
     height: 10vh;
     width: 100%;
 }
 .bacode_area{
     position: relative;
     width: 100%;
-    top: 12vh;
+    top: 16vh;
     height: 65vh;
 }
 .sousin{
     position: absolute;
-    top: 50vh;
+    top: 54vh;
     left: 10vh;
     text-align: center;
     width: 60%;
 }
 h3{
     text-align: center;
-    margin: 0;
+    margin: 3vw;
 }
 </style>
