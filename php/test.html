@@ -37,6 +37,14 @@
         出来たこと<input type="text" v-model="thing"><br>
         文章<input type="text" v-model="story"><br>
         <input type="button" value="create_ifstory" @click="create_ifstory"><br>
+        <h2>図鑑登録</h2>
+        ユーザID<input type="number" v-model="user_id"><br>
+        タバコID<input type="number" v-model="tobaco_id"><br>
+        <input type="button" value="create_zukan" @click="create_zukan"><br>
+        <h2>バーコード読み取り</h2>
+        ユーザID<input type="number" v-model="user_id"><br>
+        バーコード<input type="number" v-model="barcode"><br>
+        <input type="button" value="scan_barcode" @click="scan_barcode"><br>
 
     </div>
     <!-- vue.jsのCDN -->

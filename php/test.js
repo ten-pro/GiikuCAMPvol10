@@ -4,18 +4,20 @@ const app = new Vue({
     },
     data() {
         return {
-            tobaconame:'',
-            jancode:0,
-            user_name:'',
-            user_pass:'',
-            user_id:0,
-            smokingnumber:0,
-            money:0,
-            thing:'',
-            story:'',
-            year:0,
-            morth:0,
-            date:0
+            tobaconame: '',
+            jancode: 0,
+            user_name: '',
+            user_pass: '',
+            user_id: 0,
+            smokingnumber: 0,
+            money: 0,
+            thing: '',
+            story: '',
+            year: 0,
+            morth: 0,
+            date: 0,
+            tobaco_id: 0,
+            barcode:0
         }
     },
     //ページが読み込まれた時に動く処理
@@ -43,7 +45,7 @@ const app = new Vue({
         create_user() {
             axios
                 .post('http://mp-class.chips.jp/tobaco/main.php', {
-                    number:this.smokingnumber,
+                    number: this.smokingnumber,
                     create_user: ''
                 }, {
                     headers: {
@@ -58,7 +60,7 @@ const app = new Vue({
         loginchk() {
             axios
                 .post('http://mp-class.chips.jp/tobaco/main.php', {
-                    user_id:this.user_id,
+                    user_id: this.user_id,
                     login_user: ''
                 }, {
                     headers: {
@@ -90,9 +92,9 @@ const app = new Vue({
                 .post('http://mp-class.chips.jp/tobaco/main.php', {
                     user_id: this.user_id,
                     number: this.smokingnumber,
-                    year:this.year,
-                    morth:this.morth,
-                    date:this.date,
+                    year: this.year,
+                    morth: this.morth,
+                    date: this.date,
                     create_smoking_date: ''
                 }, {
                     headers: {
@@ -121,6 +123,38 @@ const app = new Vue({
 
                 )
         },
+        create_zukan() {
+            axios
+                .post('http://mp-class.chips.jp/tobaco/main.php', {
+                    user_id: this.user_id,
+                    tobaco_id: this.tobaco_id,
+                    create_zukan: ''
+                }, {
+                    headers: {
+                        'Content-Type': 'multipart/form-data'
+                    }
+                })
+                .then(
+                    (response) => (console.log(response.data)),
+
+                )
+        },
+        scan_barcode() {
+            axios
+                .post('http://mp-class.chips.jp/tobaco/main.php', {
+                    user_id: this.user_id,
+                    barcode: this.barcode,
+                    scan_barcode: ''
+                }, {
+                    headers: {
+                        'Content-Type': 'multipart/form-data'
+                    }
+                })
+                .then(function (res) {
+                    console.log(res.data)
+
+                })
+        }
     },
     computed: {
     }
