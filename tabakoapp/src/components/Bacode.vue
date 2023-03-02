@@ -2,7 +2,7 @@
     <div>
         <div class="img_area">
             <Toroku />
-            <Bacode @:click="startCamera()"/>
+            <img src="./../PNG/sukyan.png" alt="" class="bacode_img" @:click="startCamera()"/>
         </div>
         <div class="bacode_area">
                 <h3>バーコードを下記のカメラに合わせてください</h3>
@@ -91,6 +91,14 @@ const startCamera = () => {
 </script>
 
 <style scoped>
+.bacode_img{
+    position: absolute;
+    top:1vh;
+    left: 24vh;
+    width: 20vh;
+    border-top-right-radius: 18px;
+    border-bottom-right-radius:14px;
+}
 .input {
   position: absolute;
   bottom: 30%;

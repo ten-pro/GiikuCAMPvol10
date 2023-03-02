@@ -25,10 +25,10 @@ let img = reactive([
     {value: 5, name: "5000"},
     {value: 6, name: "10000"},
 ])
-let bgImg = reactive({
-    value:1
-})
-console.log(bgImg.value)
+// let bgImg = reactive({
+//     value:1
+// })
+// console.log(bgImg.value)
 const props = defineProps({
     nowstate: Object,
   })
