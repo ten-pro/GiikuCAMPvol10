@@ -8,7 +8,7 @@
 <style scoped>
 .honsu_img{
     position: absolute;
-    top:1vh;
+    top:0.7vw;
     left: 2vh;
     width: 20vh;
     border-top-right-radius: 18px;

@@ -1,15 +1,16 @@
 <template>
-    <div>
+    <div class="zentai_area">
         <div class="img_area">
             <Toroku />
-            <img src="./../PNG/sukyan.png" alt="" class="bacode_img" @:click="startCamera()"/>
+            <!-- <Bacode @:click="startCamera()"/> -->
         </div>
         <div class="bacode_area">
-                <h3>バーコードを下記のカメラに合わせてください</h3>
-                <div id="interactive" class="viewport"></div>
-                
-                <input type="text" class="input" placeholder="手入力はこちらから" v-model="barcodeNum.num">
-            <img src="../PNG/sousin.png" alt="" class="sousin" @click="send()">
+                <h3>バーコードを下記のカメラに<br>合わせてください</h3>
+                <div>
+                    <StreamBarcodeReader @Decode="onDecode" @loaded="onLoaded" class="camera_area"></StreamBarcodeReader>
+                </div>
+                <input type="text" class="input" placeholder="手入力はこちらから" v-model="barcode.num">
+            <img src="../PNG/sousin1.png" alt="" class="sousin" @click="send()">
         </div>
         <Futter />
     </div>
@@ -20,16 +21,19 @@ import Toroku from './Honsu/Toroku.vue'
 import Bacode from './Honsu/bacode.vue'
 import Futter from './Futter.vue'
 import axios from "axios";
-import Quagga from "@ericblade/quagga2";
-import { ref, onMounted } from "vue";
-const barcodeNum = reactive({num:0});
+import {StreamBarcodeReader} from "vue-barcode-reader"
+let barcode = reactive({
+    num:0
+});
+// import Quagga from "@ericblade/quagga2";
+//import { ref, onMounted } from "vue";
 
 const send = () => {
   axios
                 .post('https://mp-class.chips.jp/tobaco/main.php', {
                     user_id: localStorage.getItem("tabaco_id"),
                     // localStrage.getItem("tabaco_id")
-                    barcode: barcodeNum.num,
+                    barcode: barcode.num,
                     scan_barcode: ''
                 }, {
                     headers: {
@@ -42,66 +46,69 @@ const send = () => {
                 })
 }
 
-
-const startCamera = () => {
-  //初期設定
-  Quagga.init(
-    {
-      inputStream: {
+const onDecode=(result)=>{
+    console.log(result)
+    barcode.num = result
+}
+// const startCamera = () => {
+//   //初期設定
+//   Quagga.init(
+//     {
+//       inputStream: {
         
-        type: "LiveStream",
-        constraints: {
-          // サイズ指定
-          width: 360,
-          height: 240,
-          // width:window.innerWidth
-        },
-        // target: document.querySelector("#interactive"),
-      },
-      decoder: {
-        readers: [{
-          format:'ean_reader',
-          config:{},
-        },],
-      },
-    },
-    (err) =>{
-      if(!err){
-        console.log('エラーなし');
-        Quagga.start();
-        console.log('くあっがスタート');
-      }else{
-        Quagga.stop();
-        alert('この機能を利用するには\nブラウザのカメラ利用を許可してください。');
-      }
-    }
-  );
-  Quagga.onDetected((result) => {
-    console.log(result.codeResult.code);
-      const code = result.codeResult.code;
-      barcodeNum.num = result.codeResult.code;
-    Quagga.stop();
+//         type: "LiveStream",
+//         constraints: {
+//           // サイズ指定
+//           width: 360,
+//           height: 240,
+//           // width:window.innerWidth
+//         },
+//         // target: document.querySelector("#interactive"),
+//       },
+//       decoder: {
+//         readers: [{
+//           format:'ean_reader',
+//           config:{},
+//         },],
+//       },
+//     },
+//     (err) =>{
+//       if(!err){
+//         console.log('エラーなし');
+//         Quagga.start();
+//         console.log('くあっがスタート');
+//       }else{
+//         Quagga.stop();
+//         alert('この機能を利用するには\nブラウザのカメラ利用を許可してください。');
+//       }
+//     }
+//   );
+//   Quagga.onDetected((result) => {
+//     console.log(result.codeResult.code);
+//       const code = result.codeResult.code;
+//       barcodeNum.num = result.codeResult.code;
+//     Quagga.stop();
       
-    });
+//     });
 
   
-}
-
-
+// }
+// const onDecode=(decodedData)=> {
+//         barcode = decodedData
+//         console.log(decodedData)
+// }
 </script>
 
 <style scoped>
-.bacode_img{
-    position: absolute;
-    top:1vh;
-    left: 24vh;
-    width: 20vh;
-    border-top-right-radius: 18px;
-    border-bottom-right-radius:14px;
+.zentai{
+    position: relative;
 }
+/* .camera_area{
+    position: relative;
+} */
 .input {
   position: absolute;
-  bottom: 30%;
+  top:98vw;
   left: 20%;
   width: 60vw;
   font-size: 200%;
@@ -110,22 +117,28 @@ const startCamera = () => {
   border-radius: 10px;
 }
 .img_area{
-    position: relative;
-    top:9vh;
+    position: absolute;
+    top:10vh;
     height: 10vh;
     width: 100%;
 }
 .bacode_area{
     position: relative;
     width: 100%;
-    top: 12vh;
+    top: 16vh;
     height: 65vh;
 }
 .sousin{
     position: absolute;
-    top: 50vh;
+    top: 54vh;
     left: 10vh;
     text-align: center;
     width: 60%;
+    border-top-right-radius: 18px;
+    border-bottom-right-radius:14px;
+}
+h3{
+    text-align: center;
+    margin: 3vw;
 }
 </style>
