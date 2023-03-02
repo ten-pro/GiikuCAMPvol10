@@ -6,6 +6,7 @@ import Dashboard from '../components/dashboard.vue';
 import Honsu from '../components/Honsu.vue';
 import Zukan from '../components/Zukan.vue';
 import Shinki from '../components/Shinkilog.vue';
+import Login2 from '../components/Login2.vue';
 
 
 const routes = [
@@ -39,6 +40,11 @@ const routes = [
   {
     path: '/shinki',
     component: Shinki,
+
+  },
+  {
+    path: '/login2',
+    component: Login2,
 
   },
 ]
