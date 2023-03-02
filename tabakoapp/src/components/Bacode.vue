@@ -134,6 +134,8 @@ const onDecode=(result)=>{
     left: 10vh;
     text-align: center;
     width: 60%;
+    border-top-right-radius: 18px;
+    border-bottom-right-radius:14px;
 }
 h3{
     text-align: center;

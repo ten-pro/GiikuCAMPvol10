@@ -5,7 +5,7 @@ import barcode from '../components/Bacode.vue'
 import Dashboard from '../components/dashboard.vue';
 import Honsu from '../components/Honsu.vue';
 import Zukan from '../components/Zukan.vue';
-
+import Shinki from '../components/Shinkilog.vue';
 
 const routes = [
   {
@@ -33,6 +33,11 @@ const routes = [
   {
     path: '/zukan',
     component: Zukan,
+
+  },
+  {
+    path: '/shinki',
+    component: Shinki,
 
   },
 ]
