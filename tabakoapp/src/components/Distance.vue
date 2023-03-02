@@ -17,7 +17,7 @@
             <div class="now_distance" v-if="i%40==0">{{ i*85 }}mm</div>
         </div> -->
         <div class="tabako_area">
-            <div  v-for="i in Math.ceil(state.tabako_count/5)" :key="i">
+            <div  v-for="i in state.tabako_count" :key="i">
                 <div class="now_distance_5vh" v-if="i%40==0">{{ i*85*5/10 }}cm</div>
                 <img class="tabako_img" src="./PNG/tabako_distance.png">
                 <img v-if="state.tabako_count-i*5+1>0" class="tabako_img" src="./PNG/tabako_distance.png">
@@ -50,7 +50,7 @@ const startfunk=()=>{
         })
         .then(function (res) {
             console.log(res)
-            state.tabako_count=res.data.tobaco.all.num;
+            state.tabako_count=Math.ceil(res.data.tobaco.all.num);
             state.distance=state.tabako_count*85;
         })
 }
