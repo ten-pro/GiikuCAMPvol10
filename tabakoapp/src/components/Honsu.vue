@@ -5,18 +5,25 @@
             <Bacode />
         </div>
         <div class="goukei_area">
+            <div class="goukei_text">
                 <span class="goukei">合計:{{hairetu.sum}}本</span>
             </div>
-        <div class="henkou_area">
-            <span class="pura20" @click="addsum20">+20</span>
-            <img src="../PNG/hakotabako.png" alt="" class="hako">
-            <span class="mai20" @click="hikusum20">-20</span>
-            <span class="pura1" @click="addsum1">+1</span>
-            <img src="../PNG/ippon.png" alt="" class="ippon">
-            <span class="mai1" @click="hikusum1">-1</span>
-            <img src="../PNG/sousin1.png" alt="" class="sousin" @click="create_smoking">
         </div>
-        
+        <div class="henkou_area">
+            <div class="hako_area">
+                <span class="pura20" @click="addsum20">+20</span>
+                <img src="../PNG/hakotabako.png" alt="" class="hako">
+                <span class="mai20" @click="hikusum20">-20</span>
+            </div>
+            <div class="hon_area">
+                <span class="pura1" @click="addsum1">+1</span>
+                <img src="../PNG/ippon.png" alt="" class="ippon">
+                <span class="mai1" @click="hikusum1">-1</span>
+            </div>
+        </div>
+        <div class="sousin_area">
+            <img src="../PNG/sousin1.png" alt="" class="sousin" @click="create_smoking">
+        </div>        
         <Futter />
     </div>
 </template>
@@ -60,35 +67,44 @@ const create_smoking=() =>{
 </script>
 <style scoped>
 .img_area{
-    position: relative;
-    top:4vh;
+    display: flex;
+    justify-content: space-around;
     height: 10vh;
     width: 100%;
+    margin-top: 3vh;
 }
 .goukei_area{
-    position: relative;
     border:2px solid #000000;
-    top:6vh;
     width: 30vh;
-    text-align: center;
-    margin: 0 auto;
+    height: 7vh;
+    margin: auto;
+    margin-top: 1vh;
     background-color: white;
     color: black;
+    border-radius: 10px;
 }
 .henkou_area{
-    position: relative;
-    top:7vh;
-    height: 60vh;
+    height: 45vh;
     width: 100%;
-    margin:0 auto;
+    display: flex;
+}
+.hako_area{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    text-align: center;
+}
+.hon_area{
+    display: flex;
+  flex-flow: column;
+  width: 50%;
+  text-align: center;
+
 }
 
 .pura20{
-    position: absolute;
-    top: 1.5vh;
-    left: 7vh;
-    font-size: 50px;
-    display: inline-block;
+    margin-top: 1vh;
+    font-size: 40px;
     color: #ffffff;
     text-shadow    : 
        2px  2px 1px black,
@@ -101,17 +117,13 @@ const create_smoking=() =>{
        0px -2px 1px black;  
 }
 .hako{
-    position: absolute;
     width: 20vh;
-    top:11vh;
-    left: 3vh;
+    margin: auto;
+    margin-top: 2vh;
+    margin-bottom: 3vh;
 }
 .mai20{
-    position: absolute;
-    top: 38vh;
-    left: 7vh;
-    font-size: 50px;
-    display: inline-block;
+    font-size: 40px;
     color: #ffffff;
     text-shadow    : 
        2px  2px 1px black,
@@ -124,11 +136,8 @@ const create_smoking=() =>{
        0px -2px 1px black;  
 }
 .pura1{
-    position: absolute;
-    top: 1vh;
-    left: 31vh;
-    font-size: 50px;
-    display: inline-block;
+    margin-top: 0.7vh;
+    font-size: 40px;
     color: #ffffff;
     text-shadow    : 
        2px  2px 1px black,
@@ -141,17 +150,13 @@ const create_smoking=() =>{
        0px -2px 1px black;  
 }
 .ippon{
-    position: absolute;
     width: 7vh;
-    top: 10vh;
-    left: 31vh;
+    margin: auto;
+    margin-top: 0.4vh;
+    margin-bottom: 1vh;
 }
 .mai1{
-    position: absolute;
-    top: 38vh;
-    left: 32vh;
-    font-size: 50px;
-    display: inline-block;
+    font-size: 40px;
     color: #ffffff;
     text-shadow    : 
        2px  2px 1px black,
@@ -164,19 +169,23 @@ const create_smoking=() =>{
        0px -2px 1px black;  
 }
 .sousin{
-    position: absolute;
-    top: 47vh;
-    left: 10vh;
-    text-align: center;
-    width: 60%;
+    width: 55%;
     border-top-right-radius: 18px;
     border-bottom-right-radius:14px;
     cursor: pointer;
-
 }
 
 .goukei{
-    font-size: 300%;
+    font-size: 40px;
     font-weight: bold;
 }
+.sousin_area{
+    text-align: center;
+    margin-top: 4vh;
+}
+.goukei_text{
+    text-align: center;
+}
+
+
 </style>
