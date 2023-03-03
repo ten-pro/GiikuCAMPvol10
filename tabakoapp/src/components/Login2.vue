@@ -9,7 +9,7 @@
       </div>
       <div class="user_data">
         <p>パスワード</p>
-      <input type="password" class="pass" v-model="state.pass">
+      <input type="password" class="name" v-model="state.pass">
       </div>
       <!-- エラーの表示場所がおかしい -->
       <div v-show='state.error!=""' class="error">
@@ -76,13 +76,17 @@ const login=()=>{
 .user_data{
   width:40vw;
   margin:auto;
-  margin-top:6vh;
+  margin-top:4vh;
 }
 .user_text{
-  margin-top:10vh;
+  margin-top:6vh;
+}
+.name{
+  border-radius: 10px;
 }
 .touroku{
-  width:45vw;
-  margin-top:6vh;
+  width:17vh;
+  margin-top:8vh;
+  margin-bottom: 2vh;
 }
 </style>

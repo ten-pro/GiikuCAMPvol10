@@ -22,6 +22,7 @@ import Bacode from './Honsu/bacode.vue'
 import Futter from './Futter.vue'
 import axios from "axios";
 import {StreamBarcodeReader} from "vue-barcode-reader"
+import swal from "sweetalert";
 let barcode = reactive({
     num:0
 });
@@ -30,20 +31,30 @@ let barcode = reactive({
 
 const send = () => {
   axios
-                .post('https://mp-class.chips.jp/tobaco/main.php', {
-                    user_id: localStorage.getItem("tabaco_id"),
-                    // localStrage.getItem("tabaco_id")
-                    barcode: barcode.num,
-                    scan_barcode: ''
-                }, {
-                    headers: {
-                        'Content-Type': 'multipart/form-data'
-                    }
-                })
-                .then(function (res) {
-                    console.log(res)
+    .post('https://mp-class.chips.jp/tobaco/main.php', {
+        user_id: localStorage.getItem("tabaco_id"),
+        // localStrage.getItem("tabaco_id")
+        barcode: barcode.num,
+        scan_barcode: ''
+    }, {
+        headers: {
+            'Content-Type': 'multipart/form-data'
+        }
+    })
+    .then(function (res) {
+        if(res.data){
+            swal("登録に成功しました！","","success")
+            .then(function(){
+                location.href="/barcode"
+            })
+        }else{
+            swal("失敗","タバコのバーコードをスキャンしてください","error")
+            .then(function(){
+                location.href="/barcode"
+            })
+        }
 
-                })
+    })
 }
 
 const onDecode=(result)=>{
