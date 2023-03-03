@@ -17,14 +17,19 @@
             <div class="now_distance" v-if="i%40==0">{{ i*85 }}mm</div>
         </div> -->
         <div class="tabako_area">
-            <div  v-for="i in state.tabako_count" :key="i">
+            <div  v-for="i in state.tabako_loop" :key="i">
                 <div class="now_distance_5vh" v-if="i%40==0">{{ i*85*5/10 }}cm</div>
                 <img class="tabako_img" src="./PNG/tabako_distance.png">
-                <img v-if="state.tabako_count-i*5+1>0" class="tabako_img" src="./PNG/tabako_distance.png">
-                <img v-if="state.tabako_count-i*5+2>0" class="tabako_img" src="./PNG/tabako_distance.png">
-                <img v-if="state.tabako_count-i*5+3>0" class="tabako_img" src="./PNG/tabako_distance.png">
-                <img v-if="state.tabako_count-i*5+4>0" class="tabako_img" src="./PNG/tabako_distance.png">
+                <img class="tabako_img" src="./PNG/tabako_distance.png">
+                <img class="tabako_img" src="./PNG/tabako_distance.png">
+                <img class="tabako_img" src="./PNG/tabako_distance.png">
+                <img class="tabako_img" src="./PNG/tabako_distance.png">
             </div>
+            <img v-if="state.tabako_mod>=1" class="tabako_img" src="./PNG/tabako_distance.png">
+            <img v-if="state.tabako_mod>=2" class="tabako_img" src="./PNG/tabako_distance.png">
+            <img v-if="state.tabako_mod>=3" class="tabako_img" src="./PNG/tabako_distance.png">
+            <img v-if="state.tabako_mod>=4" class="tabako_img" src="./PNG/tabako_distance.png">
+            <img v-if="state.tabako_mod>=5" class="tabako_img" src="./PNG/tabako_distance.png">
         </div>
         <Futter />
     </div>
@@ -37,12 +42,14 @@ let tate=85;
 let state = reactive({
     distance:0,
     tabako_count:0,
+    tabako_loop:0,
+    tabako_mod:0,
 })
 const startfunk=()=>{
     axios
         .post('https://mp-class.chips.jp/tobaco/main.php', {
             user_id:localStorage.getItem("tabaco_id"),//ユーザID
-            login_user: ''
+            get_user: ''
         }, {
             headers: {
                 'Content-Type': 'multipart/form-data'
@@ -50,8 +57,11 @@ const startfunk=()=>{
         })
         .then(function (res) {
             console.log(res)
-            state.tabako_count=Math.ceil(res.data.tobaco.all.num);
-            state.distance=state.tabako_count*85;
+            state.tabako_loop=Math.floor(res.data.tobaco.all.num / 5);
+            state.tabako_count=res.data.tobaco.all.num;
+            state.tabako_mod=res.data.tobaco.all.num % 5;
+            state.distance=res.data.tobaco.all.num*85;
+            console.log(state)
         })
 }
 startfunk();

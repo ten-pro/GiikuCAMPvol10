@@ -2,7 +2,7 @@
     <div class="zentai_area">
         <div class="img_area">
             <Toroku />
-            <!-- <Bacode @:click="startCamera()"/> -->
+            <Bacode />
         </div>
         <div class="bacode_area">
                 <h3>バーコードを下記のカメラに<br>合わせてください</h3>

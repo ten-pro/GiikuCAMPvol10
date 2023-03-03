@@ -22,7 +22,7 @@ let namae = reactive([])
 let pasu = reactive([])
 const create_user=()=> {
             axios
-                .post('http://mp-class.chips.jp/tobaco/main.php', {
+                .post('https://mp-class.chips.jp/tobaco/main.php', {
                     number:smokingnumber,//今までに吸ってきた本数
 										user_name:namae,//ユーザ名
                     user_pass:pasu,//パスワード
