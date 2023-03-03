@@ -35,7 +35,7 @@ let active=reactive({
 axios
     .post('https://mp-class.chips.jp/tobaco/main.php', {
         user_id:localStorage.getItem("tabaco_id"),//ユーザID
-        login_user: ''
+        get_user: ''
     }, {
         headers: {
             'Content-Type': 'multipart/form-data'

@@ -42,7 +42,7 @@ const startfunk=()=>{
     axios
         .post('https://mp-class.chips.jp/tobaco/main.php', {
             user_id:localStorage.getItem("tabaco_id"),//ユーザID
-            login_user: ''
+            get_user: ''
         }, {
             headers: {
                 'Content-Type': 'multipart/form-data'
@@ -50,7 +50,7 @@ const startfunk=()=>{
         })
         .then(function (res) {
             console.log(res)
-            state.tabako_count=Math.ceil(res.data.tobaco.all.num);
+            state.tabako_count=Math.ceil(res.data.tobaco.all.num * 5);
             state.distance=state.tabako_count*85;
         })
 }

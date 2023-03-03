@@ -9,51 +9,86 @@
                 計算しちゃいます！
             </p>
         </div>
-        <Transition>
-        <div v-if="question==1">
-            <h1>Q1</h1>
-            <div class="question">
-                何年何か月<br>
-                吸っていますか？<br>
-                <p>（やめていた期間を除いて）</p>
+        <Transition  mode="out-in">
+            <div v-if="page==0">
+                <h1>Q1</h1>
+                <div class="question">
+                    新規登録<br>
+                </div>
+                <div class="create_area">
+                    <div class="create_text">
+                        <p>ユーザー名</p>
+                        <p>パスワード</p>
+                        <p>パスワード確認</p>
+                    </div>
+                    <div class="create_input">
+                        <input type="text" max="120" min="0" class="input_box create_width" v-model="questions.name"/>
+                        <input type="password" max="12" min="0" class="input_box create_width" v-model="questions.pass"/>
+                        <input type="password" max="12" min="0" class="input_box create_width" v-model="questions.check"/>
+                    </div>
+                </div>
+                <div v-show='questions.error!=""' class="error">
+                    {{ questions.error }}
+                </div>
+                <div class="tabako_img" @click="createcheck">
+                    次の質問
+                </div>
             </div>
-            <div class="input_area">
-                <input type="number" max="120" min="0" class="input_box" v-model="questions.year"/><p>年</p>
-                <input type="number" max="12" min="0" class="input_box" v-model="questions.month"/><p>か月</p>
+            <div v-else-if="page==1">
+                <h1>Q2</h1>
+                <div class="question">
+                    何年何か月<br>
+                    吸っていますか？<br>
+                    <p>（やめていた期間を除いて）</p>
+                </div>
+                <div v-if="nowbg==1 || nowbg==3 || nowbg==7" class="return_white" @click="--page.value"></div>
+                <div v-else class="return_black" @click="--page"></div>
+                <div class="input_area">
+                    <input type="number" max="120" min="0" class="input_box" v-model="questions.year"/><p>年</p>
+                    <input type="number" max="12" min="0" class="input_box" v-model="questions.month"/><p>か月</p>
+                </div>
+                <div class="tabako_img" @click="++page">
+                    次の質問
+                </div>
             </div>
-            <div class="tabako_img" @click="++question">
-                次の質問
-            </div>
-        </div>
-        <div v-else>
-            <h1>Q2</h1>
-            <div class="question">
-                一日何本<br>
-                吸っていますか？<br>
-                <p>（今まで吸ってきた期間の平均）</p>
-            </div>
+            <div v-else>
+                <h1>Q3</h1>
+                <div class="question">
+                    一日何本<br>
+                    吸っていますか？<br>
+                    <p>（今まで吸ってきた期間の平均）</p>
+                </div>
 
-            <div v-if="nowbg==1 || nowbg==3 || nowbg==7" class="return_white" @click="--question"></div>
-            <div v-else class="return_black" @click="--question"></div>
+                <div v-if="nowbg==1 || nowbg==3 || nowbg==7" class="return_white" @click="--page"></div>
+                <div v-else class="return_black" @click="--page"></div>
 
-            <div class="input_area">
-                <input type="number" min="0" class="input_box" v-model="questions.day"/><p>本</p>
+                <div class="input_area">
+                    <input type="number" min="0" class="input_box" v-model="questions.day"/><p>本</p>
+                </div>
+                <div class="tabako_img" @click="createfunk">
+                    計算する！
+                </div>
             </div>
-            <div class="tabako_img" @click="createfunk">
-                計算する！
-            </div>
-        </div>
         </Transition>
+        <div class="link">
+            <a href="/" class="link">ログインへ</a>
+        </div>
     </div>
 </template>
 <script setup>
 import { ref,reactive } from 'vue';
 import axios from 'axios';
-let question = ref(1)
+import swal from 'sweetalert'
+let page =ref(0)
 let questions = reactive({
+    page:0,
     year:0,
     month:0,
     day:0,
+    name:"",
+    pass:"",
+    check:"",
+    error:"",
 })
 try{
     let tabaco_id=localStorage.getItem("tabaco_id");
@@ -63,11 +98,27 @@ try{
 }catch(error){
 }
 
+const createcheck=()=>{
+    if(questions.name==""){
+        questions.error="ユーザー名を入力してください"
+    }else if(questions.pass==""){
+        questions.error="パスワードを入力してください"
+    }else if(questions.check==""){
+        questions.error="パスワード確認を入力してください"
+    }else if(questions.pass!=questions.check){
+        questions.error="パスワードとパスワード確認が一致していません"
+    }else{
+        page.value++
+    }
+}
+
 const createfunk=()=>{
     console.log((questions.year*365+questions.month*30)*questions.day)
     axios
         .post('https://mp-class.chips.jp/tobaco/main.php', {
             number:(questions.year*365+questions.month*30)*questions.day,//今までに吸ってきた本数
+            user_name:questions.name,//ユーザ名
+            user_pass:questions.pass,//パスワード
             create_user: ''
         }, {
             headers: {
@@ -76,8 +127,13 @@ const createfunk=()=>{
         })
         .then(function (res) {
             console.log(res.data)
-            localStorage.setItem("tabaco_id",res.data);
-            location.href="/dashboard";
+            if(res.data.chk){
+                localStorage.setItem("tabaco_id",res.data.id);
+                localStorage.setItem("name",res.data.name);
+                location.href="/dashboard";
+            }else{
+                swal("エラー","入力されたユーザー名はすでに使用されています","error")
+            }
         })
 }
 const props = defineProps({
@@ -95,6 +151,10 @@ h1{
     font-size:8vh;
     text-align: center;
     transition: width 1s ease-in-out;
+}
+.link{
+    text-align: center;
+    margin-top:3vh;
 }
 .title{
     display: flex;
@@ -138,6 +198,26 @@ h1{
     font-size:3.5vh;
     text-align: center;
 }
+.create_area{
+    display: flex;
+    text-align: center;
+    width:80vw;
+    margin:auto;
+    gap:5vw;
+}
+.create_text{
+    text-align: right;
+}
+.create_input{
+    display: flex;
+    flex-flow: column;
+    gap:1.5vw;
+}
+.error{
+    margin-top:3vh;
+    color:red;
+    text-align: center;
+}
 .input_area{
     display: flex;
     justify-content: center;
@@ -150,6 +230,8 @@ h1{
     border-radius: 20px;
     text-align: center;
     font-weight: bold;
+}.create_width{
+    width:35vw;
 }
 .return_white{
     position:absolute;
@@ -174,7 +256,8 @@ h1{
     color:black;
     font-size: 2vh;
     font-weight: bold;
-    margin:9vh auto;
+    margin:auto;
+    margin-top:9vh;
     width:35vw;
     height: 5vh;
     background-image: url("./PNG/tabako_button.png");
@@ -186,7 +269,7 @@ h1{
 }
 .v-enter-active,
 .v-leave-active {
-  transition: opacity 1s ease;
+  transition: opacity 0.5s ease;
 }
 
 .v-enter-from,

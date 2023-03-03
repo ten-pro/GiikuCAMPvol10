@@ -1,12 +1,12 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import Login from '../components/Login.vue';
+import Create from '../components/Login.vue';
 import Distance from '../components/Distance.vue';
 import barcode from '../components/Bacode.vue'
-import Dashboard from '../components/dashboard.vue';
+import Dashboard2 from '../components/dashboard.vue';
 import Honsu from '../components/Honsu.vue';
 import Zukan from '../components/Zukan.vue';
 import Shinki from '../components/Shinkilog.vue';
-import Login2 from '../components/Login2.vue';
+import Login from '../components/Login2.vue';
 
 const routes = [
   {
@@ -14,12 +14,16 @@ const routes = [
     component: Login,
   },
   {
+    path: '/create',
+    component: Create,
+  },
+  {
     path: '/distance',
     component: Distance,
   },
   {
     path: '/dashboard',
-    component: Dashboard,
+    component: Dashboard2,
   },
   {
 
@@ -39,11 +43,6 @@ const routes = [
   {
     path: '/shinki',
     component: Shinki,
-
-  },
-  {
-    path: '/login2',
-    component: Login2,
 
   },
 ]

@@ -11,6 +11,7 @@
     "@ericblade/quagga2": "^1.8.2",
     "axios": "^1.2.6",
     "chart.js": "^4.2.0",
+    "sweetalert": "^2.1.2",
     "vue": "^3.2.45",
     "vue-axios": "^3.5.2",
     "vue-barcode-reader": "^1.0.3",
