@@ -46,6 +46,8 @@ const app = new Vue({
             axios
                 .post('http://mp-class.chips.jp/tobaco/main.php', {
                     number: this.smokingnumber,
+                    user_name:this.user_name,
+                    user_pass:this.user_pass,
                     create_user: ''
                 }, {
                     headers: {
@@ -57,10 +59,25 @@ const app = new Vue({
 
                 )
         },
-        loginchk() {
+        get_user() {
             axios
                 .post('http://mp-class.chips.jp/tobaco/main.php', {
                     user_id: this.user_id,
+                    get_user: ''
+                }, {
+                    headers: {
+                        'Content-Type': 'multipart/form-data'
+                    }
+                })
+                .then(
+                    (response) => (console.log(response.data))
+                )
+        },
+        login_user() {
+            axios
+                .post('http://mp-class.chips.jp/tobaco/main.php', {
+                    user_name:this.user_name,
+                    user_pass:this.user_pass,
                     login_user: ''
                 }, {
                     headers: {

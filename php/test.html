@@ -14,12 +14,19 @@
         <input type="button" value="タバコ作成" @click="create_tobaco"><br>
         <br>
         <h2>createuser</h2>
+        name<input type="text" v-model="user_name"><br>
+        pass<input type="text" v-model="user_pass"><br>
         今までにどれくらい吸ってきたか<input type="number" v-model="smokingnumber"><br>
         <input type="button" value="Create" @click="create_user"><br>
 
         <h2>Login</h2>
+        name<input type="text" v-model="user_name"><br>
+        pass<input type="text" v-model="user_pass"><br>
+        <input type="button" value="Login" @click="login_user"><br>
+        <br>
+        <h2>ユーザ情報</h2>
         id<input type="number" v-model="user_id"><br>
-        <input type="button" value="Login" @click="loginchk"><br>
+        <input type="button" value="Login" @click="get_user"><br>
         <br>
         <h2>create_smoking</h2>
         ユーザid<input type="number" v-model="user_id"><br>

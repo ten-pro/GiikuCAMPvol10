@@ -13,8 +13,8 @@ require_once './ZukanDAO.php';
 
 $data = false;
 
-//login_userの引数がある時の処理
-if (isset($_POST['login_user']) == true) {
+//get_userの引数がある時の処理
+if (isset($_POST['get_user']) == true) {
 
     //配列の宣言（無いとエラーが発生した）
     $data = array();
@@ -28,12 +28,16 @@ if (isset($_POST['login_user']) == true) {
 //create_userの引数がある時の処理
 if (isset($_POST['create_user']) == true) {
     $class = new Login();
-    $id = $class->create_user();
+    $data = $class->create_user($_POST['user_name'],$_POST['user_pass']);
 
-    $class = new Tobaco();
-    $class->create_smoking_date($id, $_POST['number'], 2000, 0, 0,);
+    $class2 = new Tobaco();
+    $class2->create_smoking_date($id, $_POST['number'], 2000, 0, 0,);
+}
 
-    $data = $id;
+//login_userの引数がある時の処理
+if (isset($_POST['login_user']) == true) {
+    $class = new Login();
+    $data = $class->login_user($_POST['user_name'],$_POST['user_pass']);
 }
 
 //create_tobacoの引数がある時の処理
