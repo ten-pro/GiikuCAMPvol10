@@ -53,10 +53,9 @@ const create_smoking=() =>{
                         'Content-Type': 'multipart/form-data'
                     }
                 })
-                .then(
-                    (response) => (console.log(response.data)),
-
-                )
+                .then(function(res){
+                    location.href="/dashboard"
+                })
         }
 </script>
 <style scoped>
