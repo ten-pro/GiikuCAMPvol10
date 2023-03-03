@@ -31,6 +31,18 @@
             <img v-if="state.tabako_mod>=4" class="tabako_img" src="./PNG/tabako_distance.png">
             <img v-if="state.tabako_mod>=5" class="tabako_img" src="./PNG/tabako_distance.png">
         </div>
+
+
+        <div class="tabako_area">
+            <div  v-for="i in state.tabako_count" :key="i">
+                <div class="now_distance_5vh" v-if="i%40==0">{{ i*85*5/10 }}cm</div>
+                <img class="tabako_img" src="./PNG/tabako_distance.png">
+                <img v-if="state.tabako_count-i*5+1>0" class="tabako_img" src="./PNG/tabako_distance.png">
+                <img v-if="state.tabako_count-i*5+2>0" class="tabako_img" src="./PNG/tabako_distance.png">
+                <img v-if="state.tabako_count-i*5+3>0" class="tabako_img" src="./PNG/tabako_distance.png">
+                <img v-if="state.tabako_count-i*5+4>0" class="tabako_img" src="./PNG/tabako_distance.png">
+            </div>
+        </div>
         <Futter />
     </div>
 </template>
