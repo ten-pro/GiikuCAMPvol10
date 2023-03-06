@@ -7,7 +7,7 @@
                         bgimg.value === 6 ? 'hilite' : '',
                         bgimg.value === 7 ? 'wakaba' : '',]">
     <label class="selectbox-003">
-      <select v-model="bgimg.value"  @click="changefunk">
+      <select v-model="bgimg.value"  @change="changefunk">
         <option v-for="tabako in tabakos" :value="tabako.value" :selected="tabako.value == bgimg.value" :key="tabako.value">
           {{ tabako.name }}
         </option>
@@ -31,14 +31,14 @@ let bgimg = reactive({
   value:1,
 })
 console.log(localStorage.getItem("bgimg"))
-if(localStorage.getItem("bgimg")>0){
+if(localStorage.getItem("bgimg")!=null){
   bgimg.value=parseInt(localStorage.getItem("bgimg"));
   console.log("aaa")
 }
 const changefunk=()=>{
   console.log(bgimg.value)
   localStorage.removeItem("bgimg");
-  // localStorage.setItem("bgimg",bgimg.value);
+  localStorage.setItem("bgimg",bgimg.value);
 }
 </script>
 <style>

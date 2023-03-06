@@ -128,6 +128,8 @@ const onDecode=(result)=>{
   border-radius: 10px;
 }
 .img_area{
+    display: flex;
+    justify-content: space-around;
     position: absolute;
     top:10vh;
     height: 10vh;

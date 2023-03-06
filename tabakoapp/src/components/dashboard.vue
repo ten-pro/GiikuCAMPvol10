@@ -35,9 +35,9 @@
         <div class="life">
             <report :nowstate="childprops"/>
         </div>
-        <div class="life bottom">
+        <!-- <div class="life bottom">
             <graph :data="gurahu"/>
-        </div>
+        </div> -->
         <Futter class="futter" />
     </div>
 </template>
@@ -359,8 +359,8 @@ const left_mon = () =>{
     margin: 3vh 0 0 0;
     width: 90vw;
     overflow: scroll;
-    -ms-overflow-style: none;
-    scrollbar-width: none;
+    /* -ms-overflow-style: none; */
+    /* scrollbar-width: none; */
 }
 .contents::-webkit-scrollbar {
     display: none;
